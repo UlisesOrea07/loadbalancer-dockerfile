@@ -19,7 +19,7 @@ pipeline {
 		stage ('Run container'){
 			steps{
 				echo 'Running container ....'
-                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker run -d -p 8080:8080 --name loadbalancer1 loadbalancer '
+                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker run -d -p 3000:3000 --name loadbalancer1 loadbalancer '
 			}
 		}
 		stage ('Push image'){
