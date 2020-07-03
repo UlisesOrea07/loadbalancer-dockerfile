@@ -19,7 +19,7 @@ pipeline {
 		stage ('Run container'){
 			steps{
 				echo 'Running container ....'
-                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker run -d -p 80:8080 --name loadbalancer1 loadbalancer '
+                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker run -d -p 8080:8080 --name loadbalancer1 loadbalancer '
 			}
 		}
 		stage ('Push image'){
@@ -28,7 +28,7 @@ pipeline {
 				timeout(time:5, unit:'DAYS'){
 					input message:'Do you want push this image?'
 				}
-                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker push loadbalancer:latest'
+                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker tag loadbalancer:latest uliorea/myimages:loadbalancerngixn && docker push uliorea/myimages:loadbalancerngixn'
 			}
 			post {
 				success {
