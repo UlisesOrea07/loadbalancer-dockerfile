@@ -25,7 +25,7 @@ pipeline {
 		stage ('Push image'){
 			steps{
 				echo 'Pushing image ....'
-                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker login -u uliorea -p $DPASS --password-stdin && docker tag loadbalancer:latest uliorea/myimages:loadbalancerngixn && docker push uliorea/myimages:loadbalancerngixn'
+                                sh 'cd /var/lib/jenkins/workspace/docker-loadbalancer/ && docker login -u uliorea -p $DPASS && docker tag loadbalancer:latest uliorea/myimages:loadbalancerngixn && docker push uliorea/myimages:loadbalancerngixn'
 			}
 			post {
 				success {
